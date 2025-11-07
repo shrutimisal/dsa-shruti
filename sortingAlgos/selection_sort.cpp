@@ -9,9 +9,7 @@ void selection_sort(int arr[], int n ){
                 smallestIndex = j;
             }
         }
-        int temp = arr[i];
-        arr[i] = arr[smallestIndex];
-        arr[smallestIndex] = temp;
+        swap(arr[i],arr[smallestIndex]);
     }
 }
 
