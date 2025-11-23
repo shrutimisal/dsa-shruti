@@ -1,62 +1,49 @@
 #include <stdio.h>
 
+// Merge two sorted parts of the array
 void merge(int arr[], int st, int mid, int end) {
-    int n1 = mid - st + 1;
-    int n2 = end - mid;
+    int temp[100];  // temporary array (big enough for most small cases)
+    int i = st;     // starting index of left half
+    int j = mid + 1; // starting index of right half
+    int k = 0;      // index for temp array
 
-    // Temporary arrays
-    int left[n1], right[n2];
-
-    // Copy data into temporary arrays
-    for (int i = 0; i < n1; i++)
-        left[i] = arr[st + i];
-    for (int j = 0; j < n2; j++)
-        right[j] = arr[mid + 1 + j];
-
-    int i = 0, j = 0, k = st;
-
-    // Merge the two halves
-    while (i < n1 && j < n2) {
-        if (left[i] <= right[j]) {
-            arr[k] = left[i];
-            i++;
+    // Compare and merge
+    while (i <= mid && j <= end) {
+        if (arr[i] <= arr[j]) {
+            temp[k++] = arr[i++];
         } else {
-            arr[k] = right[j];
-            j++;
+            temp[k++] = arr[j++];
         }
-        k++;
     }
 
-    // Copy remaining elements of left[], if any
-    while (i < n1) {
-        arr[k] = left[i];
-        i++;
-        k++;
+    // Copy remaining elements from left half
+    while (i <= mid) {
+        temp[k++] = arr[i++];
     }
 
-    // Copy remaining elements of right[], if any
-    while (j < n2) {
-        arr[k] = right[j];
-        j++;
-        k++;
+    // Copy remaining elements from right half
+    while (j <= end) {
+        temp[k++] = arr[j++];
+    }
+
+    // Copy sorted temp array back to original array
+    for (int x = 0; x < k; x++) {
+        arr[st + x] = temp[x];
     }
 }
 
 void merge_sort(int arr[], int st, int end) {
     if (st < end) {
         int mid = (st + end) / 2;
-
-        merge_sort(arr, st, mid);
-        merge_sort(arr, mid + 1, end);
-
-        merge(arr, st, mid, end);
+        merge_sort(arr, st, mid);      // left
+        merge_sort(arr, mid + 1, end); // right
+        merge(arr, st, mid, end);      // merge
     }
 }
 
 void printArr(int arr[], int n) {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
         printf("%d ", arr[i]);
-    }
     printf("\n");
 }
 
