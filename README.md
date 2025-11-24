@@ -15,5 +15,9 @@ at coding and problem-solving.
 C++
 
 📅 Progress:
+
 23 - Day 1 — Second Largest Element in the array - Completed 💚
+
+24 - Day 2 — Move all zeroes at the end  - Completed
+
 
