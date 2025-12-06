@@ -4,6 +4,8 @@
 // 3. Count and Display node info of SLL
 // 4. Deletion in the beginning
 // 5. Minimum element
+// 6. Sort single linked list in ascending order. (Bubbke sort approach - replacing data)
+// 7. To remove duplicates from an unsorted linked list.
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -96,13 +98,58 @@ void display(){
     printf("Count : %d \n", count);
 }
 
+void sort_Asc(){
+    if(head == NULL || head ->next == NULL){
+        return;
+    }
+    struct node* i;
+    struct node* j;
+    int temp;
+
+    for(i = head ; i->next != NULL ; i=i->next){
+        for(j=i->next; j!=NULL; j= j->next){
+            if(i->data > j->data){
+                temp = i->data;
+                i->data = j->data;
+                j->data = temp;
+            }
+        }
+    }
+}
+
+void removeDuplicates() {
+    struct node* current = head;
+
+    while (current != NULL) {
+        struct node* runner = current;
+
+        while (runner->next != NULL) {
+            if (runner->next->data == current->data) {
+                struct node* temp = runner->next;
+                runner->next = runner->next->next;
+                free(temp);
+            } else {
+                runner = runner->next;
+            }
+        }
+
+        current = current->next;
+    }
+}
+
+
 int main(){
     insertAtEnd(25);
-    insertAtEnd(56);
+    insertAtEnd(5);
     insertAfterX(25,23);
+    insertAtEnd(25);
     deleteAtBeg();
     display();
-    printf("Minimum element is : %d ", miniEle());
+    printf("Minimum element is : %d \n", miniEle());
+    sort_Asc();
+    display();
+    removeDuplicates();
+    display();
     return 0;
 }
 
