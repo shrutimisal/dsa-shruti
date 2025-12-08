@@ -1,11 +1,10 @@
 #include <stdio.h>
 
-// Merge two sorted parts of the array
 void merge(int arr[], int st, int mid, int end) {
-    int temp[100];  // temporary array (big enough for most small cases)
-    int i = st;     // starting index of left half
-    int j = mid + 1; // starting index of right half
-    int k = 0;      // index for temp array
+    int temp[100];
+    int i = st;
+    int j = mid + 1;
+    int k = 0;
 
     // Compare and merge
     while (i <= mid && j <= end) {
@@ -16,12 +15,12 @@ void merge(int arr[], int st, int mid, int end) {
         }
     }
 
-    // Copy remaining elements from left half
+    // Copy remaining elements left half ke
     while (i <= mid) {
         temp[k++] = arr[i++];
     }
 
-    // Copy remaining elements from right half
+    // Copy remaining elements right half ke
     while (j <= end) {
         temp[k++] = arr[j++];
     }
