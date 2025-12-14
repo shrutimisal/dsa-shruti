@@ -180,6 +180,37 @@ void displayBackward(){
     printf("\n");
 }
 
+struct node* reverse(){
+    struct node* temp = NULL;
+    struct node* current = head;
+
+    while(current != NULL){
+        temp = current -> prev;
+        current -> prev = current -> next;
+        current -> next = temp;
+        current = current -> prev;
+    }
+
+    if(temp!=NULL){
+        head = temp->prev;
+    }
+
+    return head;
+
+}
+
+void reverseListDisplay(){
+    if(head == NULL){
+        printf("List is Empty");
+        return;
+    }
+    struct node* temp = head;
+    while(temp!=NULL){
+        printf("%d ",temp -> data);
+        temp = temp -> next;
+    }
+    printf("\n");
+}
 int main(){
     insertAtBeg(10);
     insertAtBeg(20);
@@ -201,5 +232,9 @@ int main(){
     printf("Deleting from 2nd position\n");
     deleteFromPos(2);
     displayForward();
+
+    printf("\n Reverse Display : ");
+    reverse();
+    reverseListDisplay();
     return 0;
 }
