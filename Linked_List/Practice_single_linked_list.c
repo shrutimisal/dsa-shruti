@@ -4,7 +4,7 @@
 // 3. Count and Display node info of SLL
 // 4. Deletion in the beginning
 // 5. Minimum element
-// 6. Sort single linked list in ascending order. (Bubbke sort approach - replacing data)
+// 6. Sort single linked list in ascending order. (Bubble sort approach - replacing data)
 // 7. To remove duplicates from an unsorted linked list.
 #include <stdio.h>
 #include <stdlib.h>
