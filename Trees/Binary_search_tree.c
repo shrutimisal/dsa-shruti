@@ -37,6 +37,20 @@ void inorder(struct node* root){
     }
 }
 
+// Search a node in binary search tree
+struct node* searchNode(struct node* root , int key){
+    if(root == NULL || root -> data == key ){
+        return root;
+    }
+    if(key < root -> data){
+        return searchNode(root -> left , key);
+    }else{
+        return searchNode(root -> right , key);
+    }
+}
+
+//deletion of a node
+
 int main(){
     struct node* root = NULL;
 
@@ -49,5 +63,13 @@ int main(){
 
     printf("Inorder Traversal : ");
     inorder(root);
+
+    int key = 56;
+    struct node* result = searchNode(root, key);
+
+    if (result != NULL)
+        printf("\nElement %d found in BST.\n", key);
+    else
+        printf("\nElement %d not found in BST.\n", key);
     return 0;
 }
