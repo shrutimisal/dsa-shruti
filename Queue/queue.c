@@ -39,11 +39,11 @@ void enqueue(struct Queue* q , int data){
     }
 }
 
-//deleting dara from the queue
+//deleting data from the queue
 int dequeue(struct Queue* q){
     int val = -1;
     if(isEmpty(q)){
-        printf("Queue id Empty");
+        printf("Queue is Empty");
     }else{
         q->front++;
         val = q->arr[q->front];
