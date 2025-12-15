@@ -138,18 +138,63 @@ void removeDuplicates() {
 }
 
 
+struct node *sortedMerge(struct node *head1, struct node *head2) {
+  
+    // base cases
+    if (head1 == NULL)
+        return head2;
+    if (head2 == NULL)
+        return head1;
+
+    // recursive merging based on smaller value
+    if (head1->data <= head2->data) {
+        head1->next = sortedMerge(head1->next, head2);
+        return head1;
+    }
+    else {
+        head2->next = sortedMerge(head1, head2->next);
+        return head2;
+    }
+}
+
+void printList(struct node *curr) {
+    while (curr != NULL) {
+        printf("%d", curr->data);
+        if (curr->next != NULL) {
+            printf(" -> ");
+        }
+        curr = curr->next;
+    }
+    printf("\n");
+}
+
+
+
 int main(){
-    insertAtEnd(25);
-    insertAtEnd(5);
-    insertAfterX(25,23);
-    insertAtEnd(25);
-    deleteAtBeg();
-    display();
-    printf("Minimum element is : %d \n", miniEle());
-    sort_Asc();
-    display();
-    removeDuplicates();
-    display();
+    // insertAtEnd(25);
+    // insertAtEnd(5);
+    // insertAfterX(25,23);
+    // insertAtEnd(25);
+    // deleteAtBeg();
+    // display();
+    // printf("Minimum element is : %d \n", miniEle());
+    // sort_Asc();
+    // display();
+    // removeDuplicates();
+    // display();
+
+    struct node *head1 = createNode(5);
+    head1->next = createNode(10);
+    head1->next->next = createNode(15);
+    head1->next->next->next = createNode(40);
+
+    struct node *head2 = createNode(2);
+    head2->next = createNode(3);
+    head2->next->next = createNode(20);
+
+    struct node *res = sortedMerge(head1, head2);
+
+    printList(res);
     return 0;
 }
 
