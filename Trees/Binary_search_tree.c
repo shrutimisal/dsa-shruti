@@ -37,6 +37,22 @@ void inorder(struct node* root){
     }
 }
 
+void preorder(struct node* root){
+    if(root != NULL){
+        printf("%d ", root->data);
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+void postorder(struct node* root){
+    if(root != NULL){
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->data);
+    }
+}
+
 // Search a node in binary search tree
 struct node* searchNode(struct node* root , int key){
     if(root == NULL || root -> data == key ){
@@ -63,6 +79,13 @@ int main(){
 
     printf("Inorder Traversal : ");
     inorder(root);
+    printf("\n");
+    printf("Preorder Traversal : ");
+    preorder(root);
+    printf("\n");
+    printf("Postorder Traversal : ");
+    postorder(root);
+    printf("\n");
 
     int key = 56;
     struct node* result = searchNode(root, key);
