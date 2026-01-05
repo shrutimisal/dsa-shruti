@@ -51,3 +51,55 @@ Quick Sort Algorithm
  Space Complexity:
    - O(log n) due to recursive function calls (stack space)
 */
+
+//Below is the code for taking first element (start) as the pivot
+
+// #include <stdio.h>
+
+// int partition(int arr[], int st, int end){
+//     int pivot= arr[st];
+//     int i = st+1;
+//     int j = end;
+    
+//     while(i<=j){
+//         while(i<=end && arr[i] <= pivot){
+//             i++;
+//         }
+//         while(arr[j] > pivot){
+//             j--;
+//         }
+//         if(i<j){
+//             int temp = arr[i];
+//             arr[i] = arr[j];
+//             arr[j] = temp;
+//         }
+//     }
+//     int temp = arr[st];
+//     arr[st] = arr[j];
+//     arr[j] = temp;
+//     return j ;
+// }
+
+// void quick_sort(int arr[],int st, int end){
+//     if(st<end){
+//         int pivotInd = partition(arr,st,end);
+//         quick_sort(arr,st,pivotInd-1);
+//         quick_sort(arr,pivotInd+1,end);
+//     }
+// }
+
+// void printArr(int arr[], int n){
+//     for(int i = 0; i<n; i++){
+//         printf("%d ", arr[i]);
+//     }
+// }
+
+// int main(){
+//     int arr[] = {23,2,10,10,56,89,23};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+//     quick_sort(arr,0,n-1);
+    
+//     printf("Sorted array :");
+//     printArr(arr, n);
+//     return 0;
+// }
