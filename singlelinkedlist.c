@@ -18,29 +18,29 @@ struct node* createNode(int data){
 struct node* head = NULL; //Globally declared
 
 // inserting an element at beginning
-// void insertAtBeg(int data){
-//     struct node* newNode = createNode(data);
-//     if(head == NULL){
-//         head = newNode;
-//     }else{
-//         newNode->next = head;
-//         head = newNode;
-//     }
-// }
+void insertAtBeg(int data){
+    struct node* newNode = createNode(data);
+    if(head == NULL){
+        head = newNode;
+    }else{
+        newNode->next = head;
+        head = newNode;
+    }
+}
 
 // inserting element at the end
-// void insertAtEnd(int data){
-//     struct node* newNode = createNode(data);
-//     if(head == NULL){
-//         head = newNode;
-//     }else{
-//         struct node* temp = head;
-//         while(temp->next!=NULL){
-//         temp = temp->next;
-//     }
-//     temp->next = newNode;
-//     }
-// }
+void insertAtEnd(int data){
+    struct node* newNode = createNode(data);
+    if(head == NULL){
+        head = newNode;
+    }else{
+        struct node* temp = head;
+        while(temp->next!=NULL){
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    }
+}
 
 // Inserting element at given index
 void insertAtInd(int data , int index){
@@ -145,24 +145,63 @@ void display(){
 
 // main function
 int main(){
-    // insertAtBeg(20);
-    // insertAtEnd(40);
-    // insertAtInd(60,2);
-    // display();
-    // deleteFromBeg();
-    // printf("After deleting the first element \n");
-    // display();
-    // deleteFromEnd();
-    // printf("After deleting the end element \n");
-    // display();
-    // deleteFromEnd();
-    // printf("After deleting the end element \n");
-    // display();
-    // deleteFromPos(2);
-    // printf("After deleting the element at 2 position \n");
-    // display();
-    insertAtInd(10,1);
-    insertAtInd(20,2);
-    insertAtInd(30,2);
-    display();
+
+    int choice;
+    int data;
+    int ind;
+    int pos;
+    do{
+        printf("---MENU---\n");
+        printf("1. Insert At Beginning \n");
+        printf("2. Insert at End\n");
+        printf("3. Insert at Index\n");
+        printf("4. Delete from Beginning\n");
+        printf("5. Delete from End\n");
+        printf("6. Delete from Position\n");
+        printf("7. Display\n");
+        printf("8. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+
+        switch(choice){
+            case 1:
+            printf("Enter data :");
+            scanf("%d",&data);
+            insertAtBeg(data); 
+            break;
+
+            case 2:
+            printf("Enter data :");
+            scanf("%d",&data);
+            insertAtEnd(data); 
+            break;
+
+            case 3:
+            printf("Enter data :");
+            scanf("%d",&data);
+            printf("Enter at which index you want this data :");
+            scanf("%d",&ind);
+            insertAtInd(data,ind); 
+            break;
+
+            case 4: deleteFromBeg(); break;
+
+            case 5: deleteFromEnd(); break;
+
+            case 6:
+            printf("Enter position :");
+            scanf("%d",&pos);
+            deleteFromPos(pos);
+            break;
+
+            case 7: display(); break;
+
+            case 8: printf("Exiting...\n"); break;
+
+            default: printf("Invalid choice\n");
+
+        }
+    }while(choice!=8);
+
+    return 0;
 }
