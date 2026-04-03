@@ -1,6 +1,5 @@
 // Q. Write program for Linear and binary search, state the time complexity of the searches.
 #include <stdio.h>
-#include <stdlib.h>
 
 void linear_search(int arr[], int size , int element){
     for (int i=0; i<size ; i++){
@@ -20,7 +19,7 @@ void binary_search(int arr[], int size , int element){
     while(low <= high){
         mid = (low + high) / 2;
         if(arr[mid]==element){
-            printf("Element found %d", arr[mid]);
+            printf("Element found %d at location %d", arr[mid],mid+1);
             return;
         }
         if(arr[mid] < element){
@@ -32,9 +31,9 @@ void binary_search(int arr[], int size , int element){
     }
 }
 int main(){
-    // int arr[6] ={23,52,41,12,36,89};
-    // int size = sizeof(arr)/sizeof(int);
-    // linear_search(arr,size,52);
+    int arr[6] ={23,52,41,12,36,89};
+    int size = sizeof(arr)/sizeof(int);
+    linear_search(arr,size,52);
     int arr2[6] = {1,2,3,4,5,6};
     int size2 = sizeof(arr2)/sizeof(int);
     binary_search(arr2,size2,2);
