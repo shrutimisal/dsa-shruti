@@ -14,11 +14,7 @@ at coding and problem-solving.
 🧰 Language:
 C++
 
-📅 Progress:
 
-Day 1 — Second Largest Element in the array - Completed 💚
-
-Day 2 — Move all zeroes at the end  - Completed
 
 
 
